@@ -8,7 +8,9 @@ Materials used
 
 ## Installation of Bitcoin Core
 As of this writing (May 28th, 2024), the latest release version of Bitcoin Core is 27.0 and can be downloaded from the link below. Download the relevant version of Bitcoin Core according to your computer settings.
+
 https://bitcoincore.org/bin/bitcoin-core-27.0/
+
 For macOS users, download bitcoin-27.0-arm64-apple-darwin-unsigned.tar.gz and then move the file to the directory you want. Once the file is uncompressed, a new folder called bitcoin-27.0 will appear. Move on to the uncompression_path/bitcoin-27.0/bin directory
 ```bash
 cd bitcoin-27.0/bin
