@@ -21,4 +21,17 @@ codesign -v -d bitcoin-qt
 codesign -s - bitcoin-qt
 xattr -d com.apple.quarantine $(pwd)/bitcoin-qt
 ```
-Do the same commands for the rest of the Unix Executable Files inside the bitcoin-27.0/bin directory.
+Do the same commands for the rest of the Unix Executable Files inside the bitcoin-27.0/bin directory. And then start the download.
+```bash
+./bitcoin-qt
+```
+If you have enough storage space in your computer, just download the data with default data directory path. If not, set your Bitcoin Core data directory to custom, and select one directory in your HDD. The download & syncing process will start immediately. When using HDD, the download & syncing process might be slow. Try to wait until the process speeds up. If the slow download speed problem still lingers, try the steps shown below.
+1. Stop bitcoin-qt
+2. Open finder and move on to the directory in your HDD where Bitcoin Core data is being downloaded. Find a folder called "chainstate".
+3. Rename "chainstate" to "chainstate_deprecated".
+4. Create a folder called "chainstate" in the uncompression_path/bitcoin-27.0 directory and copy the entire contents of "chainstate_deprecated" and paste all of them to the new "chainstate" folder.
+5. Create a symbolic link between the HDD Bitcoin data directory and bitcoin-27.0/chainstate directory.
+```bash
+ln -s /path/to/uncompression_path/bitcoin-27.0/chainstate /path/to/HDD_Bitcoin_data_directory
+```
+
