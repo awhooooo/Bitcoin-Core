@@ -71,3 +71,21 @@ $ cat /opt/homebrew/var/lib/tor/BitcoinCore/hostname
 ```
 
 ## Configuration of Bitcoin Core
+Bitcoin configuration file can be found in uncompression_path/bitcoin-27.0 folder (look for bitcoin.conf file).
+```bash
+$ nano uncompression_path/bitcoin-27.0/bitcoin.conf
+```
+And set the options as shown below.
+```bash
+dbcache=1024
+bind=127.0.0.1
+discover=0
+listen=1
+externalip=532dslflklpqpouq04092032323ldaoioaazo345xxfgid.onion  # example onion address
+onlynet=onion
+proxy=127.0.0.1:9050
+```
+Now to link this new configuration to the bitcoin node, use -conf option when running bitcoin-qt.
+```bash
+$ ./bitcoin-qt -conf=uncompression_path/bitcoin-27.0/bitcoin.conf
+```
