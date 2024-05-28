@@ -57,6 +57,17 @@ HiddenServiceDir /opt/homebrew/var/lib/tor/BitcoinCore/
 HiddenServicePort 8333 127.0.0.1:8333
 
 # Network
-SocksPort 9050
+SOCKSPort 9050
+ControlPort 9051
 Log notice file /opt/homebrew/var/log/tor.log
 ```
+Now start the tor network and check the log file. If there are no warning or error messages, you are good to go.
+```bash
+$ brew services start tor
+```
+The onion address of the TOR network is available on the path you set as the "HiddenServiceDir". Check the "hostname" file data.
+```bash
+$ cat /opt/homebrew/var/lib/tor/BitcoinCore/hostname
+```
+
+## Configuration of Bitcoin Core
