@@ -23,7 +23,7 @@ $ xattr -d com.apple.quarantine $(pwd)/bitcoin-qt
 ```
 Do the same commands for the rest of the Unix Executable Files inside the bitcoin-27.0/bin directory.
 
-## Download of Bitcoin Core Data
+## Downloading Bitcoin Core Data
 ```bash
 $ ./bitcoin-qt
 ```
@@ -36,4 +36,27 @@ If you have enough storage space in your computer, just download the data with d
 ```bash
 $ ln -s /path/to/uncompression_path/bitcoin-27.0/chainstate /path/to/HDD_Bitcoin_data_directory
 ```
+6. Restart bitcoin-qt with this new settings.
+This will make the download speed faster than before.
 
+## Downloading TOR network
+Homebrew package manager must be pre-installed before downloading TOR. Download TOR using brew and make TOR service data directory.
+```bash
+$ brew install tor
+$ sudo chown -R username:usergroup /opt/homebrew/var/lib/tor/BitcoinCore/
+$ sudo chmod -R 700 /opt/homebrew/var/lib/tor/BitcoinCore/
+```
+The TOR configuration file can be found at /opt/homebrew/etc/tor/torrc and the log file is at /opt/homebrew/var/log/tor.log. Open the config file.
+```bash
+$ nano /opt/homebrew/etc/tor/torrc
+```
+And set the options as shown below.
+```bash
+DataDirectory /opt/homebrew/var/lib/tor
+HiddenServiceDir /opt/homebrew/var/lib/tor/BitcoinCore/
+HiddenServicePort 8333 127.0.0.1:8333
+
+# Network
+SocksPort 9050
+Log notice file /opt/homebrew/var/log/tor.log
+```
