@@ -54,7 +54,7 @@ And set the options as shown below.
 ```bash
 DataDirectory /opt/homebrew/var/lib/tor
 HiddenServiceDir /opt/homebrew/var/lib/tor/BitcoinCore/
-HiddenServicePort 8333 127.0.0.1:8334
+HiddenServicePort 8333 127.0.0.1:8333
 
 # Network
 SOCKSPort 9050
@@ -82,7 +82,7 @@ dbcache=1024
 bind=127.0.0.1
 discover=0
 listen=1
-externalip=532dslflklpqpouq04092032323ldaoioaazo345xxfgid.onion  # example onion address
+externalip=owdhrhanf7tfovhqckqi5qiuoe6pnm3py3kpkk257x333r47xgxd5iid.onion:8333 # onion address
 onlynet=onion
 proxy=127.0.0.1:9050
 ```
