@@ -14,3 +14,27 @@
    git clone https://github.com/spesmilo/electrumx.git
    cd electrumx
    ```
+   Check the contents of the electrumx folder, and find the setup.py file, build and install.
+   ```bash
+   -rw-r--r--   1 user  admin  2102 May 30 20:00 setup.py
+   python setup.py build
+   python setup.py install
+   ```
+   While installing, plyvel and aiorpcX might result version mismatches. If that is the case, try below...
+   ```bash
+   pip install --upgrade --no-cache-dir plyvel
+   pip install 'aiorpcX[ws]>=0.23.0,<0.24'
+   python setup.py install
+   ```
+   For anaconda environment users, successful installation would be like this...
+   ```bash
+   Installing electrumx_compact_history script to /Users/anaconda3/bin
+   Installing electrumx_rpc script to /Users/anaconda3/bin
+   Installing electrumx_server script to /Users/anaconda3/bin
+
+   Using /Users/anaconda3/lib/python3.10/site-packages
+   Finished processing dependencies for e-x==1.16.0
+   ```
+
+
+
