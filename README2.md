@@ -96,7 +96,7 @@
    ```
 8. Inside /Users/me/electrumx/contrib/daemontools/env there are multiple settings options. Change them according to your situation.
    CACHE_MB => 2000, COIN => Bitcoin, DB_DIRECTORY => the data directory you created on your HDD, NET => mainnet
-   DB_ENGINE => leveldb, ELECTRUMX => /Users/anaconda3/bin/electrumx_server
+   DB_ENGINE => leveldb, ELECTRUMX => /Users/anaconda3/bin/electrumx_server,
    DAEMON_URL => this option should be identical to your bitcoin.conf settings.
  
    
