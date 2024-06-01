@@ -146,13 +146,26 @@
 
 10. If stable maintenence is preferred, use daemontools. In this case, daemontools was not used, since I wanted to start and stop the syncing process whenever I want. The
     ElectrumX syncing process might take several hours or even days. The log file informs you how much time is left until full synchronization. If you want to quit syncing
-    process, simply press ctrl + C (keyboard interrupt). The ElectrumX server will automatically flush all data being processed into database and whenever you restart the process,
+    process, simply press ctrl + C (keyboard interrupt). Or you can kill the process by kill <PID> command. The ElectrumX server will automatically flush all data being processed
+    into database and whenever you restart the process,
     the syncing will progress from the point where you left previously.
     ```bash
-    INFO:History:flushed history in 2.5s for 1,922,554 addrs
-    INFO:DB:flush #145 took 2.6s.  Height 438,424 txs: 169,927,510 (+1,063,633)
-    INFO:DB:tx/sec since genesis: 7,160, since last flush: 5,096
-    INFO:DB:sync time: 06h 35m 30s  ETA: 2d 15h 10m
+    ps aux | grep electrum
+    kill <electrumx_server process id>
+    ```
+    
+    ```bash
+    WARNING:Controller:received SIGTERM signal, initiating shutdown
+    INFO:Controller:shutting down
+    INFO:Prefetcher:cancelled; prefetcher stopping 
+    INFO:BlockProcessor:flushing to DB for a clean shutdown...
+    INFO:DB:flushed filesystem data in 0.01s
+    INFO:History:flushed history in 2.4s for 1,669,124 addrs
+    INFO:DB:flushed 6,465 blocks with 10,373,272 txs, 5,428,110 UTXO adds, 4,350,829 spends in 9.7s, committing...
+    INFO:DB:flush #229 took 33.2s.  Height 489,759 txs: 261,961,361 (+699,120)
+    INFO:DB:tx/sec since genesis: 7,911, since last flush: 7,429
+    INFO:DB:sync time: 09h 11m 52s  ETA: 1d 12h 34m
+    INFO:Controller:shutdown complete
     ```
 
 
