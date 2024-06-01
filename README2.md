@@ -98,6 +98,42 @@
    CACHE_MB => 2000, COIN => Bitcoin, DB_DIRECTORY => the data directory you created on your HDD, NET => mainnet
    DB_ENGINE => leveldb, ELECTRUMX => /Users/anaconda3/bin/electrumx_server,
    DAEMON_URL => this option should be identical to your bitcoin.conf settings.
+9. Start syncing
+   ```bash
+   # Before syncing, make sure that Bitcoin Core is running with proper rpc settings.
+   brew services start daemontools # this is optional
+   cd /opt/homebrew/etc/service
+   svscan /opt/homebrew/etc/service
+   ```
+   
+   Go to the ElectrumX database directory in your HDD (or wherever that is), there will be /log/current file. Open it with a text editor and you'll see these messages...
+   ```bash
+   Launching ElectrumX server...
+   INFO:electrumx:ElectrumX server starting
+   INFO:electrumx:logging level: INFO
+   INFO:Controller:Python version: 3.10.9 (main, Mar  1 2023, 12:20:14) [Clang 14.0.6 ]
+   INFO:Controller:software version: ElectrumX 1.16.0
+   INFO:Controller:aiorpcX version: 0.23.1
+   INFO:Controller:supported protocol versions: 1.4-1.4.3
+   INFO:Controller:event loop policy: None
+   INFO:Controller:reorg limit is 200 blocks
+   INFO:Daemon:daemon #1 at 127.0.0.1:8332/ (current)
+   INFO:DB:switching current directory to /path/to/HDD/ElectrumX
+   INFO:DB:using leveldb for DB backend
+   INFO:DB:opened UTXO DB (for sync: True)
+   INFO:DB:UTXO DB version: 8
+   INFO:DB:coin: Bitcoin
+   INFO:DB:network: mainnet
+   INFO:DB:height: 337,593
+   INFO:DB:tip: 00000000000000000db4f619c43d85cfa05731e42e15fca0bad297138b1bbc8c
+   INFO:DB:tx count: 55,824,315
+   INFO:DB:flushing DB cache at 2,000 MB
+   INFO:DB:sync time so far: 02h 33m 16s
+   INFO:History:history DB version: 1
+   INFO:History:flush count: 53
+   INFO:Prefetcher:catching up to daemon height 846,024 (508,431 blocks behind)
+   ```
+
  
    
 
