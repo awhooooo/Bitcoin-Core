@@ -35,6 +35,31 @@
    Using /Users/anaconda3/lib/python3.10/site-packages
    Finished processing dependencies for e-x==1.16.0
    ```
+4. There is a version mismatch between leveldb 1.23 and plyvel, so leveldb 1.22 is required. Version 1.22 is available here =>
+   https://github.com/google/leveldb/releases/tag/1.22
+   ```bash
+   tar -xvf leveldb-1.22.tar
+   cd leveldb-1.22
+   cd build
+   export CPLUS_INCLUDE_PATH=/usr/local/include
+   export LIBRARY_PATH=/usr/local/lib
+   cmake -DCMAKE_BUILD_TYPE=Release ..
+   cmake --build .
+   sudo cp -r libleveldb.* /usr/local/lib/
+   sudo cp -r ../include/leveldb /usr/local/include/
+   ```
+   If plyvel was already installed, deleted it and reinstall again.
+   ```bash
+   pip uninstall plyvel
+   pip install plyvel --no-cache-dir
+   ```
+   Test whether plyvel is properly linked. The command below shouldn't return anything if set properly.
+   ```bash
+   python -c "import plyvel"
+   ```
+
+
+   
 
 
 
