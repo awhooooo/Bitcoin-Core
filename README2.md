@@ -24,7 +24,7 @@
    ```
    Check the contents of the electrumx folder, and find the setup.py file, build and install.
    ```bash
-   $ -rw-r--r--   1 user  admin  2102 May 30 20:00 setup.py
+   -rw-r--r--   1 user  admin  2102 May 30 20:00 setup.py
    $ python setup.py build
    $ python setup.py install
    ```
