@@ -69,7 +69,7 @@
 5. Create a new directory in the HDD (or in your computer if you have enough space) for ElectrumX database.
 
 6. Install daemontools and setup dependencies. Since we are using daemontools (systemd is not supported on macOS), we have to make a symbolic link inside the service
-   directory,connecting with /Users/me/electrumx/contrib/daemontools
+   directory, connecting with /Users/me/electrumx/contrib/daemontools
    ```bash
    brew install daemontools
    sudo mkdir -p /opt/homebrew/etc/service
