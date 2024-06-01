@@ -108,6 +108,7 @@
    ```
 
 8. Inside /Users/me/electrumx/contrib/daemontools/env there are multiple settings options. Change them according to your situation.
+   ```bash
    CACHE_MB => 2000
    COIN => Bitcoin
    DB_DIRECTORY => /path/to/HDD/ElectrumX
@@ -115,6 +116,7 @@
    DB_ENGINE => leveldb
    ELECTRUMX => /Users/anaconda3/bin/electrumx_server
    DAEMON_URL => this option should be identical to your bitcoin.conf settings. In this case, http://blacksabbath:paranoid@127.0.0.1:8332/
+   ```
 
 9. Start syncing
    ```bash
