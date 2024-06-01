@@ -85,6 +85,14 @@ listen=1
 externalip=owdhrhanf7tfovhqckqi5qiuoe6pnm3py3kpkk257x333r47xgxd5iid.onion:8333 # onion address
 onlynet=onion
 proxy=127.0.0.1:9050
+
+#RPC options
+rpcallowip=127.0.0.1
+rpcallowip=192.168.0.0/24
+rpcuser=blacksabbath
+rpcpassword=paranoid
+rpcport=8332
+server=1
 ```
 Now to link this new configuration to the bitcoin node, use -conf option when running bitcoin-qt.
 ```bash
