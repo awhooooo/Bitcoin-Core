@@ -148,8 +148,12 @@
     ElectrumX syncing process might take several hours or even days. The log file informs you how much time is left until full synchronization. If you want to quit syncing
     process, simply press ctrl + C (keyboard interrupt). The ElectrumX server will automatically flush all data being processed into database and whenever you restart the process,
     the syncing will progress from the point where you left previously.
- 
-   
+    ```bash
+    INFO:History:flushed history in 2.5s for 1,922,554 addrs
+    INFO:DB:flush #145 took 2.6s.  Height 438,424 txs: 169,927,510 (+1,063,633)
+    INFO:DB:tx/sec since genesis: 7,160, since last flush: 5,096
+    INFO:DB:sync time: 06h 35m 30s  ETA: 2d 15h 10m
+    ```
 
 
 
