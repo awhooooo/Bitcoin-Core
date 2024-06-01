@@ -3,15 +3,17 @@
 ## Pre-requisites
 1. Ensure python (version >= 3.9) is installed.
    
-2. If the indexing of your Bitcoin Core node was disabled, quit the process, modify the bitcoin.conf file as below. Reindexing might take several hours. Once reindexing is
-   complete, disable the option. If not disabled, your node will go through reindexing process all over again when you restart Bitcoin Core.
-    ```bash
-    txindex=1
-    blockfilterindex=1
-    reindex=1
-    ```
+2. If the indexing of your Bitcoin Core node was disabled, quit the process, modify the bitcoin.conf file as below. Reindexing might take several hours. 
+   ```bash
+   txindex=1
+   blockfilterindex=1
+   reindex=0
+   ```
    Also, when reindexing is complete, make sure to disable the reindex option next time you run Bitcoin Core. Otherwise, the chainstate and indexes data will be gone and have to
-   start the reindexing process all over again.
+   start the reindexing process all over again. In order to avoid enabling reindexing by mistake, use the command below when starting Bitcoin Core...
+   ```bash
+   $ ./bitcoin-qt -conf=/Users/legacy/BitcoinCore/bitcoin-27.0/bitcoin.conf -reindex=1
+   ```
 
 3. Move on to the directory where you want to download ElectrumX code and download it.
    ```bash
