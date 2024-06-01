@@ -14,8 +14,6 @@ https://bitcoincore.org/bin/bitcoin-core-27.0/
 For macOS users, download bitcoin-27.0-arm64-apple-darwin-unsigned.tar.gz and then move the file to the directory you want. Once the file is uncompressed, a new folder called bitcoin-27.0 will appear. Move on to the uncompression_path/bitcoin-27.0/bin directory
 ```bash
 $ cd bitcoin-27.0/bin
-```
-```bash
 $ ls -al
 drwxr-xr-x@ 9 user  admin       288 Jun  2 04:57 .
 drwxr-xr-x@ 9 user  admin       288 May 28 13:22 ..
