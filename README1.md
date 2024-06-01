@@ -16,7 +16,7 @@ For macOS users, download bitcoin-27.0-arm64-apple-darwin-unsigned.tar.gz and th
 $ cd bitcoin-27.0/bin
 ```
 ```bash
-ls -al
+$ ls -al
 drwxr-xr-x@ 9 user  admin       288 Jun  2 04:57 .
 drwxr-xr-x@ 9 user  admin       288 May 28 13:22 ..
 -rwxr-xr-x  1 user  admin    505232 May 19 21:05 bitcoin-cli
