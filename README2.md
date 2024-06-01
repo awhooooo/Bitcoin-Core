@@ -58,7 +58,47 @@
    python -c "import plyvel"
    ```
 
+## Setting up ElectrumX
+5. Create a new directory in the HDD (or in your computer if you have enough space) for ElectrumX database.
+6. Install daemontools and setup dependencies. Since we are using daemontools (systemd is not supported on macOS), we have to make a symbolic link inside the service
+   directory,connecting with /Users/me/electrumx/contrib/daemontools
+   ```bash
+   brew install daemontools
+   sudo mkdir -p /opt/homebrew/etc/service
+   cd /opt/homebrew/etc/service
+   ln -s /Users/me/electrumx/contrib/daemontools electrumx
+   ```
+7. Inside /Users/me/electrumx/contrib/daemontools, there are two "run" files. One in /Users/me/electrumx/contrib/daemontools/run and the other one in
+   /Users/me/electrumx/contrib/daemontools/log/run.
+   Modify /Users/me/electrumx/contrib/daemontools/run as below...
+   ```bash
+   #!/bin/sh
+   echo "Launching ElectrumX server..."
+   USERNAME=$(envdir ./env printenv USERNAME)
+   ELECTRUMX=$(envdir ./env printenv ELECTRUMX)
+    
+   # Setting the PATH and PYTHONPATH
+   export PATH="/Users/anaconda3/bin:$PATH"
+   export PYTHONPATH="/Users/anaconda3/lib/python3.10/site-packages"
+   export LD_LIBRARY_PATH="/opt/homebrew/lib:$LD_LIBRARY_PATH"
+    
+   # Increase the file descriptor limit
+   ulimit -n 10000 
+    
+   # Execute the ElectrumX server with the appropriate environment
+   exec 2>&1 envdir ./env envuidgid $USERNAME /Users/anaconda3/bin/python /Users/anaconda3/bin/electrumx_server
 
+   ```
+   Modify /Users/me/electrumx/contrib/daemontools/log/run as below...
+   ```bash
+   #!/bin/sh
+   exec multilog s500000 n10 "/Volumes/Ultra Touch/ElectrumX/log/"
+   ```
+8. Inside /Users/me/electrumx/contrib/daemontools/env there are multiple settings options. Change them according to your situation.
+   CACHE_MB => 2000, COIN => Bitcoin, DB_DIRECTORY => the data directory you created on your HDD, NET => mainnet
+   DB_ENGINE => leveldb, ELECTRUMX => /Users/anaconda3/bin/electrumx_server
+   DAEMON_URL => this option should be identical to your bitcoin.conf settings.
+ 
    
 
 
