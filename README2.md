@@ -15,21 +15,21 @@
 
 3. Move on to the directory where you want to download ElectrumX code and download it.
    ```bash
-   cd /Users/me
-   git clone https://github.com/spesmilo/electrumx.git
-   cd electrumx
+   $ cd /Users/me
+   $ git clone https://github.com/spesmilo/electrumx.git
+   $ cd electrumx
    ```
    Check the contents of the electrumx folder, and find the setup.py file, build and install.
    ```bash
-   -rw-r--r--   1 user  admin  2102 May 30 20:00 setup.py
-   python setup.py build
-   python setup.py install
+   $ -rw-r--r--   1 user  admin  2102 May 30 20:00 setup.py
+   $ python setup.py build
+   $ python setup.py install
    ```
    While installing, plyvel and aiorpcX might result version mismatches. If that is the case, try below...
    ```bash
-   pip install --upgrade --no-cache-dir plyvel
-   pip install 'aiorpcX[ws]>=0.23.0,<0.24'
-   python setup.py install
+   $ pip install --upgrade --no-cache-dir plyvel
+   $ pip install 'aiorpcX[ws]>=0.23.0,<0.24'
+   $ python setup.py install
    ```
    For anaconda environment users, successful installation would be like this...
    ```bash
@@ -44,25 +44,25 @@
 4. There is a version mismatch between leveldb 1.23 and plyvel, so leveldb 1.22 is required. Version 1.22 is available here =>
    https://github.com/google/leveldb/releases/tag/1.22
    ```bash
-   tar -xvf leveldb-1.22.tar
-   cd leveldb-1.22
-   mkdir -p build
-   cd build
-   export CPLUS_INCLUDE_PATH=/usr/local/include
-   export LIBRARY_PATH=/usr/local/lib
-   cmake -DCMAKE_BUILD_TYPE=Release ..
-   cmake --build .
-   sudo cp -r libleveldb.* /usr/local/lib/
-   sudo cp -r ../include/leveldb /usr/local/include/
+   $ tar -xvf leveldb-1.22.tar
+   $ cd leveldb-1.22
+   $ mkdir -p build
+   $ cd build
+   $ export CPLUS_INCLUDE_PATH=/usr/local/include
+   $ export LIBRARY_PATH=/usr/local/lib
+   $ cmake -DCMAKE_BUILD_TYPE=Release ..
+   $ cmake --build .
+   $ sudo cp -r libleveldb.* /usr/local/lib/
+   $ sudo cp -r ../include/leveldb /usr/local/include/
    ```
    If plyvel was already installed, deleted it and reinstall again.
    ```bash
-   pip uninstall plyvel
-   pip install plyvel --no-cache-dir
+   $ pip uninstall plyvel
+   $ pip install plyvel --no-cache-dir
    ```
    Test whether plyvel is properly linked. The command below shouldn't return anything if set properly.
    ```bash
-   python -c "import plyvel"
+   $ python -c "import plyvel"
    ```
 
 ## Setting up ElectrumX
@@ -71,10 +71,10 @@
 6. Install daemontools and setup dependencies. Since we are using daemontools (systemd is not supported on macOS), we have to make a symbolic link inside the service
    directory, connecting with /Users/me/electrumx/contrib/daemontools
    ```bash
-   brew install daemontools
-   sudo mkdir -p /opt/homebrew/etc/service
-   cd /opt/homebrew/etc/service
-   ln -s /Users/me/electrumx/contrib/daemontools electrumx
+   $ brew install daemontools
+   $ sudo mkdir -p /opt/homebrew/etc/service
+   $ cd /opt/homebrew/etc/service
+   $ ln -s /Users/me/electrumx/contrib/daemontools electrumx
    ```
 
 7. Inside /Users/me/electrumx/contrib/daemontools, there are two "run" files. One in /Users/me/electrumx/contrib/daemontools/run and the other one in
@@ -112,9 +112,9 @@
 9. Start syncing
    ```bash
    # Before syncing, make sure that Bitcoin Core is running with proper rpc settings.
-   brew services start daemontools # this is optional
-   cd /opt/homebrew/etc/service
-   svscan /opt/homebrew/etc/service
+   $ brew services start daemontools # this is optional
+   $ cd /opt/homebrew/etc/service
+   $ svscan /opt/homebrew/etc/service
    ```
    
    Go to the ElectrumX database directory in your HDD (or wherever that is), there will be /log/current file. Open it with a text editor and you'll see these messages...
@@ -151,8 +151,8 @@
     into database and whenever you restart the process,
     the syncing will progress from the point where you left previously.
     ```bash
-    ps aux | grep electrum
-    kill <electrumx_server process id>
+    $ ps aux | grep electrum
+    $ kill <electrumx_server process id>
     ```
     
     ```bash
