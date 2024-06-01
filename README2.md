@@ -46,6 +46,7 @@
    ```bash
    tar -xvf leveldb-1.22.tar
    cd leveldb-1.22
+   mkdir -p build
    cd build
    export CPLUS_INCLUDE_PATH=/usr/local/include
    export LIBRARY_PATH=/usr/local/lib
