@@ -1,7 +1,7 @@
 # ElectrumX Server (macOS)
 
 ## Pre-requisites
-1. Ensure python (version >= 3.9) is installed.
+1. Ensure python (version >= 3.9) is installed. In this case, anaconda3 python virtual environment is used. 
    
 2. If the indexing of your Bitcoin Core node was disabled, quit the process, modify the bitcoin.conf file as below. Reindexing might take several hours. 
    ```bash
