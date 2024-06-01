@@ -7,10 +7,11 @@
    ```bash
    txindex=1
    blockfilterindex=1
-   reindex=0
+   reindex=0  # default
    ```
    Also, when reindexing is complete, make sure to disable the reindex option next time you run Bitcoin Core. Otherwise, the chainstate and indexes data will be gone and have to
-   start the reindexing process all over again. In order to avoid enabling reindexing by mistake, use the command below when starting Bitcoin Core...
+   start the reindexing process all over again. In order to avoid enabling reindexing by mistake, use the command below when starting Bitcoin Core and remove the reindex option
+   when reindexing is not needed.
    ```bash
    $ ./bitcoin-qt -conf=/Users/legacy/BitcoinCore/bitcoin-27.0/bitcoin.conf -reindex=1
    ```
