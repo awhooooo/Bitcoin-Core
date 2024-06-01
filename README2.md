@@ -133,7 +133,10 @@
    INFO:History:flush count: 53
    INFO:Prefetcher:catching up to daemon height 846,024 (508,431 blocks behind)
    ```
-
+10. If stable maintenence is preferred, use daemontools. In this case, daemontools was not used, since I wanted to start and stop the syncing process whenever I want. The
+    ElectrumX syncing process might take several hours or even days. The log file informs you how much time is left until full synchronization. If you want to quit syncing
+    process, simply press ctrl + C (keyboard interrupt). The ElectrumX server will automatically flush all data being processed into database and whenever you restart the process,
+    the syncing will progress from the point where you left previously.
  
    
 
