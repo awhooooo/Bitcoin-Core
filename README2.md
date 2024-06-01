@@ -100,7 +100,7 @@
    Modify /Users/me/electrumx/contrib/daemontools/log/run as below...
    ```bash
    #!/bin/sh
-   exec multilog s500000 n10 "/Volumes/Ultra Touch/ElectrumX/log/"
+   exec multilog s500000 n10 "/path/to/HDD/ElectrumX/log/"
    ```
 
 8. Inside /Users/me/electrumx/contrib/daemontools/env there are multiple settings options. Change them according to your situation.
