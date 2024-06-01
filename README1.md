@@ -15,6 +15,18 @@ For macOS users, download bitcoin-27.0-arm64-apple-darwin-unsigned.tar.gz and th
 ```bash
 $ cd bitcoin-27.0/bin
 ```
+```bash
+ls -al
+drwxr-xr-x@ 9 user  admin       288 Jun  2 04:57 .
+drwxr-xr-x@ 9 user  admin       288 May 28 13:22 ..
+-rwxr-xr-x  1 user  admin    505232 May 19 21:05 bitcoin-cli
+-rwxr-xr-x@ 1 user  admin  30629872 May 19 21:05 bitcoin-qt
+-rwxr-xr-x  1 user  admin   2268096 May 19 21:06 bitcoin-tx
+-rwxr-xr-x  1 user  admin    347072 May 19 21:06 bitcoin-util
+-rwxr-xr-x  1 user  admin   5123920 May 19 21:06 bitcoin-wallet
+-rwxr-xr-x  1 user  admin  11871232 May 19 21:03 bitcoind
+-rwxr-xr-x  1 user  admin  19950928 May 19 21:07 test_bitcoin
+```
 Inside the directory, you will see 7 Unix Executable Files and if you try to run them in the terminal, you might receive the following warning message: ("bitcoin-qt" is damaged and cannot be opened. You should move it to the Trash.) In order to resolve this issue, enter the commands below.
 ```bash
 $ codesign -v -d bitcoin-qt
