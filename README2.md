@@ -48,18 +48,22 @@
    https://github.com/google/leveldb/releases/tag/1.22
    ```bash
    $ tar -xvf leveldb-1.22.tar
-   $ cd leveldb-1.22
+   # create a folder called "leveldb" under /opt/homebrew/Cellar and "1.22.0" folder under the "leveldb" folder you just created. And put all the uncompressed data into the
+   1.22.0 folder. 
+   $ cd /opt/homebrew/Cellar/leveldb/1.22.0
    $ mkdir -p build
    $ cd build
-   $ export CPLUS_INCLUDE_PATH=/usr/local/include
-   $ export LIBRARY_PATH=/usr/local/lib
-   $ cmake -DCMAKE_BUILD_TYPE=Release ..
+   $ cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_LIBS=ON -DCMAKE_PREFIX_PATH=/opt/homebrew ..
    $ cmake --build .
-   $ sudo cp -r libleveldb.* /usr/local/lib/
-   $ sudo cp -r ../include/leveldb /usr/local/include/
+   $ sudo ln -sf $(pwd)/libleveldb.dylib /opt/homebrew/lib/libleveldb.dylib
+   $ sudo ln -sf $(pwd)/libleveldb.1.dylib /opt/homebrew/lib/libleveldb.1.dylib
+   $ ln -sf $(pwd)/../include/leveldb /opt/homebrew/include/leveldb
    ```
    If plyvel was already installed, deleted it and reinstall again.
    ```bash
+   $ export CPLUS_INCLUDE_PATH=-I"/opt/homebrew/include"
+   $ export LIBRARY_PATH=-L"/opt/homebrew/lib"
+   $ export DYLD_LIBRARY_PATH="/opt/homebrew/lib:$DYLD_LIBRARY_PATH"
    $ pip uninstall plyvel
    $ pip install plyvel --no-cache-dir
    ```
