@@ -44,7 +44,7 @@
    Finished processing dependencies for e-x==1.16.0
    ```
 
-4. There is a version mismatch between leveldb 1.23 and plyvel, so leveldb 1.22 is required. Version 1.22 is available here =>
+4. It seems that leveldb 1.23 and plyvel are incompatible, so leveldb 1.22 is required. Version 1.22 is available here =>
    https://github.com/google/leveldb/releases/tag/1.22
    ```bash
    $ tar -xvf leveldb-1.22.tar
