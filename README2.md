@@ -55,6 +55,7 @@
    $ cd build
    $ cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_LIBS=ON -DCMAKE_PREFIX_PATH=/opt/homebrew ..
    $ cmake --build .
+   
    $ sudo ln -sf $(pwd)/libleveldb.dylib /opt/homebrew/lib/libleveldb.dylib
    $ sudo ln -sf $(pwd)/libleveldb.1.dylib /opt/homebrew/lib/libleveldb.1.dylib
    $ ln -sf $(pwd)/../include/leveldb /opt/homebrew/include/leveldb
