@@ -1,4 +1,4 @@
-# ElectrumX Server (macOS)
+# Bitcoin ElectrumX Server (macOS)
 
 ## Pre-requisites
 1. Ensure python (version >= 3.9) is installed. In this case, anaconda3 python virtual environment is used. 
