@@ -51,8 +51,8 @@
    # Create a folder called "leveldb" under /opt/homebrew/Cellar and "1.22.0" folder under the "leveldb" folder you just created.
    # And put all the uncompressed data into the 1.22.0 folder. 
    $ cd /opt/homebrew/Cellar/leveldb/1.22.0
-   $ mkdir -p build
-   $ cd build
+   $ mkdir -p lib
+   $ cd lib
    $ cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_LIBS=ON -DCMAKE_PREFIX_PATH=/opt/homebrew ..
    $ cmake --build .
    
