@@ -48,8 +48,8 @@
    https://github.com/google/leveldb/releases/tag/1.22
    ```bash
    $ tar -xvf leveldb-1.22.tar
-   # create a folder called "leveldb" under /opt/homebrew/Cellar and "1.22.0" folder under the "leveldb" folder you just created.
-   #And put all the uncompressed data into the 1.22.0 folder. 
+   # Create a folder called "leveldb" under /opt/homebrew/Cellar and "1.22.0" folder under the "leveldb" folder you just created.
+   # And put all the uncompressed data into the 1.22.0 folder. 
    $ cd /opt/homebrew/Cellar/leveldb/1.22.0
    $ mkdir -p build
    $ cd build
