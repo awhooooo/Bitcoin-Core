@@ -58,6 +58,8 @@
    $ sudo ln -sf $(pwd)/libleveldb.dylib /opt/homebrew/lib/libleveldb.dylib
    $ sudo ln -sf $(pwd)/libleveldb.1.dylib /opt/homebrew/lib/libleveldb.1.dylib
    $ ln -sf $(pwd)/../include/leveldb /opt/homebrew/include/leveldb
+   $ ln -s /opt/homebrew/lib/libleveldb.dylib /Users/anaconda3/lib/libleveldb.dylib
+   $ ln -s /opt/homebrew/lib/libleveldb.1.dylib /Users/anaconda3/lib/libleveldb.1.dylib
    ```
    If plyvel was already installed, deleted it and reinstall again.
    ```bash
