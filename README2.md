@@ -185,5 +185,38 @@
     INFO:Controller:shutdown complete
     ```
 
+## Networking
+11. Creating a self-signed ssl certificate
+    ```bash
+    $ cd /Users/me/electrumx
+    $ mkdir ssl_keys
+    $ cd ssl_keys
+    $ openssl genpkey -algorithm RSA -out server.key
+
+    $ openssl req -new -key server.key -out server.csr
+    You are about to be asked to enter information that will be incorporated
+    into your certificate request.
+    What you are about to enter is what is called a Distinguished Name or a DN.
+    There are quite a few fields but you can leave some blank
+    For some fields there will be a default value,
+    If you enter '.', the field will be left blank.
+    -----
+    Country Name (2 letter code) [AU]:KR
+    State or Province Name (full name) [Some-State]:Seoul
+    Locality Name (eg, city) []:Seoul
+    Organization Name (eg, company) [Internet Widgits Pty Ltd]:Seoul National University
+    Organizational Unit Name (eg, section) []:College of Engineering       
+    Common Name (e.g. server FQDN or YOUR name) []:awhooooo
+    Email Address []:peterkids911@gmail.com
+   
+    Please enter the following 'extra' attributes
+    to be sent with your certificate request
+    A challenge password []:
+    An optional company name []:.
+
+    $ openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+    Certificate request self-signature ok
+    subject=C=KR, ST=Seoul, L=Seoul, O=Seoul National University, OU=College of Engineering, CN=awhooooo, emailAddress=peterkids911@gmail.com
+    ```
 
 
