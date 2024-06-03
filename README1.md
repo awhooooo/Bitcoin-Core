@@ -108,3 +108,13 @@ Now to link this new configuration to the bitcoin node, use -conf option when ru
 ```bash
 $ ./bitcoin-qt -conf=uncompression_path/bitcoin-27.0/bitcoin.conf
 ```
+
+## Remarks
+Setting the internet connection to use static IPv4 address on macOS
+1. Wi-Fi settings => Details => TCP/IP => configure IPv4 => Manually
+2. Set the static IPv4 address to whatever address you want to use (i.e 192.168.0.31)
+3. Usually the network settings can be changed at https://192.168.0.1
+4. If 3 is the case, then on your macOS Wi-Fi settings page, add 192.168.0.1 as a DNS server address
+5. Port forwarding is required. If you are in a double NAT situation (that is, your external ip address is within the private ip range), port forwarding
+   should be done on both routers. If port forwarding is not an option due to permission issues, there won't be any inbound connections. (Although this
+   won't be a problem with data syncing.) In this case, using tor network can bypass the double NAT problem.
