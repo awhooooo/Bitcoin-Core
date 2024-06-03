@@ -212,7 +212,7 @@
     $ kill <electrumx_server process id>
     ```
 
-    Another method is using the electrumx_rpc file.
+    Another method is using the electrumx_rpc file. In order to use this command, rpc address and port must be in the SERVICES environment variable.
     ```bash
     $ cd /Users/anaconda3/bin
     $ ls -al | grep electrumx
