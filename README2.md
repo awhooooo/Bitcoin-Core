@@ -203,12 +203,23 @@
 
 11. If stable maintenence is preferred, use daemontools. In this case, daemontools was not used, since I wanted to start and stop the syncing process whenever I want. The
     ElectrumX syncing process might take several hours or even days. The log file informs you how much time is left until full synchronization. If you want to quit syncing
-    process, simply press ctrl + C (keyboard interrupt). Or you can kill the process by kill <PID> command. The ElectrumX server will automatically flush all data being processed
-    into database and whenever you restart the process,
-    the syncing will progress from the point where you left previously.
+    process, simply press ctrl + C (keyboard interrupt).
+
+    Or you can kill the process by kill <PID> command. The ElectrumX server will automatically flush all data being processed
+    into database and whenever you restart the process and the syncing will progress from the point where you left previously.
     ```bash
     $ ps aux | grep electrum
     $ kill <electrumx_server process id>
+    ```
+
+    Another method is using the electrumx_rpc file.
+    ```bash
+    $ cd /Users/anaconda3/bin
+    $ ls -al | grep electrumx
+    -rwxr-xr-x    1 user  staff      207 May 30 20:33 electrumx_compact_history
+    -rwxr-xr-x    1 user  staff      183 May 30 20:33 electrumx_rpc
+    -rwxr-xr-x    1 user  staff      189 May 30 20:33 electrumx_server
+    $ ./electrumx_rpc stop
     ```
     
     ```bash
