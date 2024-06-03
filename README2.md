@@ -182,7 +182,7 @@
     INFO:Controller:event loop policy: None
     INFO:Controller:reorg limit is 200 blocks
     INFO:Daemon:daemon #1 at 127.0.0.1:8332/ (current)
-    INFO:DB:switching current directory to /Users/ieunmi/Downloads/ElectrumX
+    INFO:DB:switching current directory to /path/to/HDD/ElectrumX
     INFO:DB:using leveldb for DB backend
     INFO:DB:opened UTXO DB (for sync: True)
     INFO:DB:UTXO DB version: 8
