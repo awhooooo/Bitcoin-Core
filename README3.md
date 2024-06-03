@@ -7,8 +7,6 @@
    
    ```bash
    $ node --version
-   $ npm install
-   $ npm audit fix
    ```
 
 ## Setting up BTC Explorer
@@ -18,5 +16,15 @@
    $ cd /Users/me
    $ git clone https://github.com/janoside/btc-rpc-explorer
    $ cd btc-rpc-explorer
-   $ ls -al | grep env
+   $ npm install
+   $ npm audit fix
+   $ npm --version
    ```
+   Check if there is the .env file in the working directory, copy it, rename it as ".env"
+   ```bash
+   $ ls -al | grep env
+   -rw-r--r--@   1 user  admin    6311 May 27 11:29 .env-sample
+   $ cp .env-sample .env
+   ```
+
+5. 
