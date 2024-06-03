@@ -220,6 +220,7 @@
     -rwxr-xr-x    1 user  staff      183 May 30 20:33 electrumx_rpc
     -rwxr-xr-x    1 user  staff      189 May 30 20:33 electrumx_server
     $ ./electrumx_rpc stop
+    "stopping"
     ```
     
     ```bash
