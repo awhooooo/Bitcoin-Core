@@ -87,7 +87,40 @@
    $ ln -s /Users/me/electrumx/contrib/daemontools electrumx
    ```
 
-7. Inside /Users/me/electrumx/contrib/daemontools, there are two "run" files. One in /Users/me/electrumx/contrib/daemontools/run and the other one in
+7. Creating a self-signed ssl certificate
+   ```bash
+   $ cd /Users/me/electrumx
+   $ mkdir ssl_keys
+   $ cd ssl_keys
+   $ openssl genpkey -algorithm RSA -out server.key
+   
+   $ openssl req -new -key server.key -out server.csr
+   You are about to be asked to enter information that will be incorporated
+   into your certificate request.
+   What you are about to enter is what is called a Distinguished Name or a DN.
+   There are quite a few fields but you can leave some blank
+   For some fields there will be a default value,
+   If you enter '.', the field will be left blank.
+   -----
+   Country Name (2 letter code) [AU]:KR
+   State or Province Name (full name) [Some-State]:Seoul
+   Locality Name (eg, city) []:Seoul
+   Organization Name (eg, company) [Internet Widgits Pty Ltd]:Seoul National University
+   Organizational Unit Name (eg, section) []:College of Engineering       
+   Common Name (e.g. server FQDN or YOUR name) []:awhooooo
+   Email Address []:peterkids911@gmail.com
+   
+   Please enter the following 'extra' attributes
+   to be sent with your certificate request
+   A challenge password []:
+   An optional company name []:.
+   
+   $ openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+   Certificate request self-signature ok
+   subject=C=KR, ST=Seoul, L=Seoul, O=Seoul National University, OU=College of Engineering, CN=awhooooo, emailAddress=peterkids911@gmail.com
+   ```
+
+8. Inside /Users/me/electrumx/contrib/daemontools, there are two "run" files. One in /Users/me/electrumx/contrib/daemontools/run and the other one in
    /Users/me/electrumx/contrib/daemontools/log/run.
    Modify /Users/me/electrumx/contrib/daemontools/run as below...
    ```bash
@@ -114,7 +147,7 @@
    exec multilog s500000 n10 "/path/to/HDD/ElectrumX/log/"
    ```
 
-8. Inside /Users/me/electrumx/contrib/daemontools/env there are multiple settings options. Change them according to your situation.
+9. Inside /Users/me/electrumx/contrib/daemontools/env there are multiple settings options. Change them according to your situation.
    ```bash
    CACHE_MB => 2000
    COIN => Bitcoin
@@ -123,45 +156,50 @@
    DB_ENGINE => leveldb
    ELECTRUMX => /Users/anaconda3/bin/electrumx_server
    DAEMON_URL => this option should be identical to your bitcoin.conf settings. In this case, http://blacksabbath:paranoid@127.0.0.1:8332/
+   SERVICES => tcp://0.0.0.0:50001,ssl://0.0.0.0:50002,rpc://127.0.0.1:8000
+   SSL_CERTFILE => /Users/me/electrumx/ssl_keys/server.crt
+   SSL_KEYFILE => /Users/me/electrumx/ssl_keys/server.key
+   USERNAME => me
    ```
 
-9. Start syncing
-   ```bash
-   # Before syncing, make sure that Bitcoin Core is running with proper rpc settings.
-   $ brew services start daemontools # this is optional
-   $ cd /opt/homebrew/etc/service
-   $ svscan /opt/homebrew/etc/service
-   ```
+10. Start syncing
+    ```bash
+    # Before syncing, make sure that Bitcoin Core is running with proper rpc settings.
+    $ brew services start daemontools # this is optional
+    $ cd /opt/homebrew/etc/service
+    $ svscan /opt/homebrew/etc/service
+    ```
    
-   Go to the ElectrumX database directory in your HDD (or wherever that is), there will be /log/current file. Open it with a text editor and you'll see these messages...
-   ```bash
-   Launching ElectrumX server...
-   INFO:electrumx:ElectrumX server starting
-   INFO:electrumx:logging level: INFO
-   INFO:Controller:Python version: 3.10.9 (main, Mar  1 2023, 12:20:14) [Clang 14.0.6 ]
-   INFO:Controller:software version: ElectrumX 1.16.0
-   INFO:Controller:aiorpcX version: 0.23.1
-   INFO:Controller:supported protocol versions: 1.4-1.4.3
-   INFO:Controller:event loop policy: None
-   INFO:Controller:reorg limit is 200 blocks
-   INFO:Daemon:daemon #1 at 127.0.0.1:8332/ (current)
-   INFO:DB:switching current directory to /path/to/HDD/ElectrumX
-   INFO:DB:using leveldb for DB backend
-   INFO:DB:opened UTXO DB (for sync: True)
-   INFO:DB:UTXO DB version: 8
-   INFO:DB:coin: Bitcoin
-   INFO:DB:network: mainnet
-   INFO:DB:height: 337,593
-   INFO:DB:tip: 00000000000000000db4f619c43d85cfa05731e42e15fca0bad297138b1bbc8c
-   INFO:DB:tx count: 55,824,315
-   INFO:DB:flushing DB cache at 2,000 MB
-   INFO:DB:sync time so far: 02h 33m 16s
-   INFO:History:history DB version: 1
-   INFO:History:flush count: 53
-   INFO:Prefetcher:catching up to daemon height 846,024 (508,431 blocks behind)
-   ```
+    Go to the ElectrumX database directory in your HDD (or wherever that is), there will be /log/current file. Open it with a text editor and you'll see these messages...
+    ```bash
+    Launching ElectrumX server...
+    INFO:electrumx:ElectrumX server starting
+    INFO:electrumx:logging level: INFO
+    INFO:Controller:Python version: 3.10.9 (main, Mar  1 2023, 12:20:14) [Clang 14.0.6 ]
+    INFO:Controller:software version: ElectrumX 1.16.0
+    INFO:Controller:aiorpcX version: 0.23.1
+    INFO:Controller:supported protocol versions: 1.4-1.4.3
+    INFO:Controller:event loop policy: None
+    INFO:Controller:reorg limit is 200 blocks
+    INFO:Daemon:daemon #1 at 127.0.0.1:8332/ (current)
+    INFO:DB:switching current directory to /Users/ieunmi/Downloads/ElectrumX
+    INFO:DB:using leveldb for DB backend
+    INFO:DB:opened UTXO DB (for sync: True)
+    INFO:DB:UTXO DB version: 8
+    INFO:DB:coin: Bitcoin
+    INFO:DB:network: mainnet
+    INFO:DB:height: 656,563
+    INFO:DB:tip: 0000000000000000000f6e8df3549ebac5a60054388439acd76c381f81853d19
+    INFO:DB:tx count: 586,060,350
+    INFO:DB:flushing DB cache at 2,000 MB
+    INFO:DB:sync time so far: 21h 59m 26s
+    INFO:History:history DB version: 1
+    INFO:History:flush count: 566
+    INFO:SessionManager:RPC server listening on 127.0.0.1:8000
+    INFO:Prefetcher:catching up to daemon height 846,308 (189,745 blocks behind)
+    ```
 
-10. If stable maintenence is preferred, use daemontools. In this case, daemontools was not used, since I wanted to start and stop the syncing process whenever I want. The
+11. If stable maintenence is preferred, use daemontools. In this case, daemontools was not used, since I wanted to start and stop the syncing process whenever I want. The
     ElectrumX syncing process might take several hours or even days. The log file informs you how much time is left until full synchronization. If you want to quit syncing
     process, simply press ctrl + C (keyboard interrupt). Or you can kill the process by kill <PID> command. The ElectrumX server will automatically flush all data being processed
     into database and whenever you restart the process,
@@ -184,39 +222,3 @@
     INFO:DB:sync time: 09h 11m 52s  ETA: 1d 12h 34m
     INFO:Controller:shutdown complete
     ```
-
-## Networking
-11. Creating a self-signed ssl certificate
-    ```bash
-    $ cd /Users/me/electrumx
-    $ mkdir ssl_keys
-    $ cd ssl_keys
-    $ openssl genpkey -algorithm RSA -out server.key
-
-    $ openssl req -new -key server.key -out server.csr
-    You are about to be asked to enter information that will be incorporated
-    into your certificate request.
-    What you are about to enter is what is called a Distinguished Name or a DN.
-    There are quite a few fields but you can leave some blank
-    For some fields there will be a default value,
-    If you enter '.', the field will be left blank.
-    -----
-    Country Name (2 letter code) [AU]:KR
-    State or Province Name (full name) [Some-State]:Seoul
-    Locality Name (eg, city) []:Seoul
-    Organization Name (eg, company) [Internet Widgits Pty Ltd]:Seoul National University
-    Organizational Unit Name (eg, section) []:College of Engineering       
-    Common Name (e.g. server FQDN or YOUR name) []:awhooooo
-    Email Address []:peterkids911@gmail.com
-   
-    Please enter the following 'extra' attributes
-    to be sent with your certificate request
-    A challenge password []:
-    An optional company name []:.
-
-    $ openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
-    Certificate request self-signature ok
-    subject=C=KR, ST=Seoul, L=Seoul, O=Seoul National University, OU=College of Engineering, CN=awhooooo, emailAddress=peterkids911@gmail.com
-    ```
-
-
