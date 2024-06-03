@@ -161,6 +161,8 @@
    SSL_KEYFILE => /Users/me/electrumx/ssl_keys/server.key
    USERNAME => me
    ```
+   <img width="920" alt="Screenshot 2024-06-03 at 4 17 40 PM" src="https://github.com/awhooooo/Bitcoin-Core/assets/161196005/02d4a5d6-bcd3-4a2b-8d7c-9771692e106d">
+
 
 10. Start syncing
     ```bash
