@@ -31,7 +31,9 @@
    
    ```bash
    $ nano /Users/me/btc-rpc-explorer/.env
+   ```
    
+   ```bash
    BTCEXP_HOST=127.0.0.1
    BTCEXP_PORT=3002
    
@@ -46,4 +48,8 @@
    
    BTCEXP_DEMO=true
    BTCEXP_NO_RATES=false
+   ```
+
+   ```bash
+   $ npm start
    ```
