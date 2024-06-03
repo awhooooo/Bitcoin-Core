@@ -27,4 +27,23 @@
    $ cp .env-sample .env
    ```
 
-5. 
+5. Modify the .env file according to your environment settings.
+   
+   ```bash
+   $ nano /Users/me/btc-rpc-explorer/.env
+   
+   BTCEXP_HOST=127.0.0.1
+   BTCEXP_PORT=3002
+   
+   BTCEXP_BITCOIND_URI=bitcoin://blacksabbath:paranoid@127.0.0.1:8332?timeout=10000
+   BTCEXP_BITCOIND_USER=blacksabbath
+   BTCEXP_BITCOIND_PASS=paranoid
+   BTCEXP_BITCOIND_COOKIE="/path/to/HDD_Bitcoin_data_directory/.cookie"
+
+   BTCEXP_ADDRESS_API=electrum
+   BTCEXP_ELECTRUM_SERVERS=tcp://127.0.0.1:50001
+   BTCEXP_NO_INMEMORY_RPC_CACHE=true
+   
+   BTCEXP_DEMO=true
+   BTCEXP_NO_RATES=false
+   ```
