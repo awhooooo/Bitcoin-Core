@@ -20,7 +20,7 @@
    $ npm audit fix
    $ npm --version
    ```
-   Check if there is the .env file in the working directory, copy it, rename it as ".env"
+   Check if there is the .env or .env-sample file in the working directory, copy it, rename it as ".env"
    ```bash
    $ ls -al | grep env
    -rw-r--r--@   1 user  admin    6311 May 27 11:29 .env-sample
