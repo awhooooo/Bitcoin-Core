@@ -43,7 +43,7 @@
    BTCEXP_BITCOIND_COOKIE="/path/to/HDD_Bitcoin_data_directory/.cookie"
 
    BTCEXP_ADDRESS_API=electrum
-   BTCEXP_ELECTRUM_SERVERS=tcp://127.0.0.1:50001
+   BTCEXP_ELECTRUM_SERVERS=tcp://127.0.0.1:50001,ssl://127.0.0.1:50002
    BTCEXP_NO_INMEMORY_RPC_CACHE=true
    
    BTCEXP_DEMO=true
