@@ -2,6 +2,7 @@
 
 ## Building Bitcoin
 1. Cloning the github repository and building
+   
     ```bash
     $ git clone https://github.com/bitcoin/bitcoin
     $ cd bitcoin
@@ -10,7 +11,8 @@
     $ make
     ```
 
-  Results =>
+   Results =>
+  
     ```bash
     ...
       CXX      test/fuzz/libtest_fuzz_a-util.o
@@ -28,7 +30,8 @@
     make[1]: Nothing to be done for `all-am'.
     ```
 
-  Check whether bitcoind and bitcoin-cli is properly constructed =>
+   Check whether bitcoind and bitcoin-cli is properly constructed =>
+  
     ```bash
     $ ls -al | grep 'bitcoind\|bitcoin-cli'
     -rwxr-xr-x@   1 ieunmi  User     546264 Jun 28 23:25 bitcoin-cli
