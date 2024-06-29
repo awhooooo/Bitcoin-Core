@@ -35,14 +35,14 @@
     ```bash
     $ cd src
     $ ls -al | grep 'bitcoind\|bitcoin-cli'
-    -rwxr-xr-x@   1 ieunmi  User     546264 Jun 28 23:25 bitcoin-cli
-    -rw-r--r--    1 ieunmi  User       1357 Jun 28 18:28 bitcoin-cli-res.rc
-    -rw-r--r--    1 ieunmi  User      62771 Jun 28 18:28 bitcoin-cli.cpp
-    -rw-r--r--@   1 ieunmi  User    3253584 Jun 28 23:25 bitcoin_cli-bitcoin-cli.o
-    -rwxr-xr-x@   1 ieunmi  User   15916309 Jun 28 23:25 bitcoind
-    -rw-r--r--@   1 ieunmi  User    2154840 Jun 28 23:14 bitcoind-bitcoind.o
-    -rw-r--r--    1 ieunmi  User       1344 Jun 28 18:28 bitcoind-res.rc
-    -rw-r--r--    1 ieunmi  User       9445 Jun 28 18:28 bitcoind.cpp
+    -rwxr-xr-x@   1 User  admin     546264 Jun 28 23:25 bitcoin-cli
+    -rw-r--r--    1 User  admin       1357 Jun 28 18:28 bitcoin-cli-res.rc
+    -rw-r--r--    1 User  admin      62771 Jun 28 18:28 bitcoin-cli.cpp
+    -rw-r--r--@   1 User  admin    3253584 Jun 28 23:25 bitcoin_cli-bitcoin-cli.o
+    -rwxr-xr-x@   1 User  admin   15916309 Jun 28 23:25 bitcoind
+    -rw-r--r--@   1 User  admin    2154840 Jun 28 23:14 bitcoind-bitcoind.o
+    -rw-r--r--    1 User  admin       1344 Jun 28 18:28 bitcoind-res.rc
+    -rw-r--r--    1 User  admin       9445 Jun 28 18:28 bitcoind.cpp
     ```
 
 ## Bitcoin regtest configuration file
