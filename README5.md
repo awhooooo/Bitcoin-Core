@@ -33,7 +33,7 @@
 
 5. File to edit => bitcoin/src/kernel/chainparams.cpp
 
-   A: Set the BIP34 Height to 500 and BIP34 Hash to uint256(). The reason why this is not set to 0 is to enable mining at the start.
+   A: Set the BIP34 Height to 500 and BIP34 Hash to uint256(). The reason why this parameter is not set to 0 is to enable mining at the start.
       CPUminer software doesn't recognize BIP34 rule, so it is impossible to mine blocks using it with BIP34 activated from the very beginning.
       If BIP34 is set to zero and attempt mining using CPUminer, you will get the following messages in the debug.log file =>
       ```
