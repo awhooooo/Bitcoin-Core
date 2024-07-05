@@ -3,3 +3,4 @@
 ## README2.md => ElectrumX setup and configuration
 ## README3.md => Bitcoin Explorer setup and configuration
 ## README4.md => Bitcoin Core regtest setup, configuration and CPUminer
+## README5.md => New Altcoin using Bitcoin version 27.0 source code
