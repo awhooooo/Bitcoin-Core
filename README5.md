@@ -86,7 +86,8 @@
 
 7. File to edit => bitcoin/src/validation.cpp   
    
-   Line 1986: Set the function ```ChainstateManager::IsInitialBlockDownload()``` to always return false.    
+   Line 1986: Set the function ```ChainstateManager::IsInitialBlockDownload()``` to always return false.
+       
    If the Initial Block Download state of the node is true, then mining is impossible as the node thinks it is not fully synced.
    Bitcoin nodes identify themselves in Initial Block Download mode when the time interval between the timestamp of their last block
    and current time exceed 24 hours. The new chain would certainly identify itself in Initial Block Download mode since there is only
