@@ -45,16 +45,26 @@
       ```
       For more information with regard to BIP34 and CPUminer, see here: https://bitcointalk.org/index.php?topic=5293244.0
 
-   B: Set the BIP65, BIP66, CSV, Segwit and MinBIP9Warning Height to 0. (Always active)  
-   C: Set the TapRoot nStartTime to ``` Consensus::BIP9Deployment::ALWAYS_ACTIVE. ```   
-   D: Set the TapRoot nTimeout to ``` Consensus::BIP9Deployment::NO_TIMEOUT. ```   
-   E: Set the TapRoot minimum activation height to 0. (No activation delay)  
-   F: Set the MinimumChainWork to 0.  
-   G: Set the ``` defaultAssumeValid = genesis.GetHash(); ```   
-   H: Modify the magic bytes to any number you want to use.   
+   B: Set the BIP65, BIP66, CSV, Segwit and MinBIP9Warning Height to 0. (Always active)
+   
+   C: Set the TapRoot nStartTime to ``` Consensus::BIP9Deployment::ALWAYS_ACTIVE. ```
+    
+   D: Set the TapRoot nTimeout to ``` Consensus::BIP9Deployment::NO_TIMEOUT. ```
+   
+   E: Set the TapRoot minimum activation height to 0. (No activation delay)
+   
+   F: Set the MinimumChainWork to 0.
+   
+   G: Set the ``` defaultAssumeValid = genesis.GetHash(); ```
+   
+   H: Modify the magic bytes to any number you want to use.
+   
    I: Set the nDefaultPort to 50011.
-   J: Set the assumed blockchain size and chainstate size to 0.   
-   K: vSeeds and vFixedSeeds need to be empty. ``` vSeeds.clear(); vFixedSeeds.clear(); ```   
+   
+   J: Set the assumed blockchain size and chainstate size to 0.
+   
+   K: vSeeds and vFixedSeeds need to be empty. ``` vSeeds.clear(); vFixedSeeds.clear(); ```
+   
    L: Since this is a new chain, there are no checkpoints.   
       ```
       checkpointData = {
@@ -63,6 +73,7 @@
                }
            };
       ```
+      
    M: Modify the chainTxData to represent the genesis block.
       ```
       chainTxData = ChainTxData {
