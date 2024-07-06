@@ -101,8 +101,28 @@
    2024-07-05T05:43:51Z [error] ProcessNewBlock: AcceptBlock FAILED (bad-cb-height, block height mismatch in coinbase)
    ```
 
+8. File to edit => bitcoin/src/consensus/consensus.h & bitcoin/src/consensus/tx_verify.cpp
+   
+   Denying transactions that use UTXOs under block height 1000
+
+   Add below two lines in bitcoin/src/consensus/consensus.h
+   ```
+   /** Denying spending the UTXOs in block height lower than 1000 */
+   static const int MIN_BLOCK_HEIGHT_ALIVE_UTXO = 1000;
+   ```
+
+   Add below lines in the ```CheckTxInputs``` function in the bitcoin/src/consensus/tx_verify.cpp   
+   ```
+   // Check if all of the block heights of UTXOs being spent in the transaction is above 1000.
+   // UTXOs under block number 1000 is unspendable.
+   if (coin.nHeight < MIN_BLOCK_HEIGHT_ALIVE_UTXO) {
+       return state.Invalid(TxValidationResult::TX_CONSENSUS, "bad-txns-vins-outofrange", 
+           strprintf("txvin's previous vout block height < %d", MIN_BLOCK_HEIGHT_ALIVE_UTXO));
+   }
+   ```
+
 ## Node Configuration and Mining
-8. Build (Creating UNIX Executable files)
+9. Build (Creating UNIX Executable files)
    
    ```
    $ cd bitcoin
@@ -111,21 +131,21 @@
    $ make
    ```
 
-9. Make two configuration files and allocate two different node ports, rpc ports and data directories. 
-   This is to run two nodes on a local device (in my case, MacBook Air M1 macOS Ventura). A single node not connected to any peers do not
-   respond to CPUminer's getblocktemplate rpc request so running two nodes is necessary.
+10. Make two configuration files and allocate two different node ports, rpc ports and data directories. 
+    This is to run two nodes on a local device (in my case, MacBook Air M1 macOS Ventura). A single node not connected to any peers do not
+    respond to CPUminer's getblocktemplate rpc request so running two nodes is necessary.
    
-   ```
-   $ ./bitcoind -conf=/Users/legacy/bitcoin/bitcoin_modified.conf1 -debug=rpc
-   $ ./bitcoind -conf=/Users/legacy/bitcoin/bitcoin_modified.conf2 -debug=rpc
-   $ ./bitcoin-cli -conf=/Users/legacy/bitcoin/bitcoin_modified.conf1 addnode "127.0.0.1:50014" "add"  # add node2 to node1
-   $ ./bitcoin-cli -conf=/Users/legacy/bitcoin/bitcoin_modified.conf2 addnode "127.0.0.1:50011" "add"  # add node1 to node2
-   $ ./bitcoin-cli -conf=/Users/legacy/bitcoin/bitcoin_modified.conf1 getpeerinfo  # check if node2 is connected
-   $ ./bitcoin-cli -conf=/Users/legacy/bitcoin/bitcoin_modified.conf2 getpeerinfo  # check if node1 is connected
-   $ ./minerd --algo=sha256d --url=http://localhost:50010 --user=blacksabbath --pass=paranoid --coinbase-addr=bc1q7qquhjm9m7z69w5pu5qjt5k2tz7e89wk5yhv6n --debug
-   ```
+    ```
+    $ ./bitcoind -conf=/Users/legacy/bitcoin/bitcoin_modified.conf1 -debug=rpc
+    $ ./bitcoind -conf=/Users/legacy/bitcoin/bitcoin_modified.conf2 -debug=rpc
+    $ ./bitcoin-cli -conf=/Users/legacy/bitcoin/bitcoin_modified.conf1 addnode "127.0.0.1:50014" "add"  # add node2 to node1
+    $ ./bitcoin-cli -conf=/Users/legacy/bitcoin/bitcoin_modified.conf2 addnode "127.0.0.1:50011" "add"  # add node1 to node2
+    $ ./bitcoin-cli -conf=/Users/legacy/bitcoin/bitcoin_modified.conf1 getpeerinfo  # check if node2 is connected
+    $ ./bitcoin-cli -conf=/Users/legacy/bitcoin/bitcoin_modified.conf2 getpeerinfo  # check if node1 is connected
+    $ ./minerd --algo=sha256d --url=http://localhost:50010 --user=blacksabbath --pass=paranoid --coinbase-addr=bc1q7qquhjm9m7z69w5pu5qjt5k2tz7e89wk5yhv6n --debug
+    ```
 
-10. If all things are set properly, new blocks will be mined and you will be able to see the following messages on macOS terminal...
+11. If all things are set properly, new blocks will be mined and you will be able to see the following messages on macOS terminal...
 
      ```
      [2024-07-06 02:17:49] LONGPOLL pushed new work
