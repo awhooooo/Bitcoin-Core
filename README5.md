@@ -21,7 +21,7 @@
 ## Bitcoin source code modifications
 3. File to edit => bitcoin/src/chainparamsbase.cpp
    
-   Line 43: modified the rpc and onion service target port to 50010 and 50012 respectivelyF
+   Line 43: modified the rpc and onion service target port to 50010 and 50012 respectively
 
 4. File to edit => bitcoin/src/chainparamsseeds.h
 
