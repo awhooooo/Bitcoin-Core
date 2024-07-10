@@ -53,17 +53,17 @@
    
    E: Set the TapRoot minimum activation height to 0. (No activation delay)
    
-   F: Set the MinimumChainWork to 0.
+   F: Set the ```MinimumChainWork``` to 0.
    
    G: Set the ``` defaultAssumeValid = genesis.GetHash(); ```
    
    H: Modify the magic bytes to any number you want to use.
    
-   I: Set the nDefaultPort to 50011.
+   I: Set the ```nDefaultPort``` to 50011.
    
-   J: Set the assumed blockchain size and chainstate size to 0.
+   J: Set the assumed ```blockchain size``` and ```chainstate size``` to 0.
    
-   K: vSeeds and vFixedSeeds need to be empty. ``` vSeeds.clear(); vFixedSeeds.clear(); ```
+   K: ```vSeeds``` and ```vFixedSeeds``` need to be empty. ``` vSeeds.clear(); vFixedSeeds.clear(); ```
    
    L: Since this is a new chain, there are no checkpoints.   
       ```
@@ -164,18 +164,28 @@
      2024-07-05T17:17:49Z UpdateTip: new best=000000008f4753dfb9f0f6de650fd583c4af082c6a46819208dde8606c96bc92 height=3 version=0x20000000 log2_work=34.000022 tx=4 date='2024-07-05T17:17:49Z' progress=1.000000 cache=0.3MiB(1txo)
      ```
 
+12. Adjusting the difficulty level and accelerating block generation can be done by the following steps...
 
+    A: Lower the value of ```consensus.nPowTargetSpacing``` and ```consensus.powLimit``` to 2 minutes and ```uint256S("0000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff")``` respectively. 
 
+    B: Set the value of ```consensus.fPowAllowMinDifficultyBlocks``` to true. This is to enable the system to mine a block with the lowest difficulty set (i.e the level of ```consensus.powLimit```) when there is no valid block found for a certain period of time.
 
+    C: Re-compile and start mining. The nBits of the latest block will be adjusted from 0x1d00ffff to 0x1f00ffff.
 
+    D: Revert the changes made on steps 12-A and 12-B.
 
-
-
-
-
-
-
-   
-
-
-   
+    ```
+    ./bitcoin-cli -conf=/Users/legacy/BitcoinCore/bitcoin-27.0/bitcoin_modified.conf1 getmininginfo                  
+    {
+        "blocks": 536,
+        "currentblockweight": 4000,
+        "currentblocktx": 0,
+        "difficulty": 0.00390625,
+        "networkhashps": 34705.66982835201,
+        "pooledtx": 0,
+        "chain": "main",
+        "warnings": [
+            "This is a pre-release test build - use at your own risk - do not use for mining or merchant applications"
+        ]
+    }
+    ```
