@@ -101,7 +101,7 @@
    2024-07-05T05:43:51Z [error] ProcessNewBlock: AcceptBlock FAILED (bad-cb-height, block height mismatch in coinbase)
    ```
 
-8. File to edit => bitcoin/src/consensus/consensus.h & bitcoin/src/consensus/tx_verify.cpp
+8. File to edit => bitcoin/src/consensus/consensus.h & bitcoin/src/validation.cpp
    
    Denying transactions that use UTXOs under block height 1000
 
@@ -111,15 +111,18 @@
    static const int MIN_BLOCK_HEIGHT_ALIVE_UTXO = 1000;
    ```
 
-   Add below lines in the ```CheckTxInputs``` function in the bitcoin/src/consensus/tx_verify.cpp   
+   Add below lines in the ```PreChecks``` function in the bitcoin/src/validation.cpp   
    ```
-   // Check if all of the block heights of UTXOs being spent in the transaction is above 1000.
-   // UTXOs under block number 1000 is unspendable.
-   if (coin.nHeight < MIN_BLOCK_HEIGHT_ALIVE_UTXO) {
+   // Check if all of the block heights of UTXOs being spent in the transaction is above 500.
+   // UTXOs under block number 500 is unspendable.
+   const Coin& coin = coins_cache.AccessCoin(txin.prevout);
+   if (coin.nHeight < MIN_BLOCK_HEIGHT_ALIVE_UTXO && coin.nHeight != 0) {
        return state.Invalid(TxValidationResult::TX_CONSENSUS, "bad-txns-vins-outofrange", 
            strprintf("txvin's previous vout block height < %d", MIN_BLOCK_HEIGHT_ALIVE_UTXO));
    }
    ```
+
+   The coin.nHeight != 0 condition is included in order to ensure UTXOs that are still in the mempool (that is, unconfirmed) can be used as inputs. 
 
 ## Node Configuration and Mining
 9. Build (Creating UNIX Executable files)
