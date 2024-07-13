@@ -113,8 +113,8 @@
 
    Add below lines in the ```PreChecks``` function in the bitcoin/src/validation.cpp   
    ```
-   // Check if all of the block heights of UTXOs being spent in the transaction is above 500.
-   // UTXOs under block number 500 is unspendable.
+   // Check if all of the block heights of UTXOs being spent in the transaction is above 1000.
+   // UTXOs under block number 1000 is unspendable.
    const Coin& coin = coins_cache.AccessCoin(txin.prevout);
    if (coin.nHeight < MIN_BLOCK_HEIGHT_ALIVE_UTXO && coin.nHeight != 0) {
        return state.Invalid(TxValidationResult::TX_CONSENSUS, "bad-txns-vins-outofrange", 
